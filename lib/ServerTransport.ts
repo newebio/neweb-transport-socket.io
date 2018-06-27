@@ -12,7 +12,9 @@ export class ServerTransport implements IServerTransport {
         this.io = config.io || SocketIO();
         this.io.on("connect", this.onNewSocket);
     }
-    protected onNewSocket = (socket: SocketIO.Socket) =>
-        new ServerClient({ socket });
+    protected onNewSocket = (socket: SocketIO.Socket) => {
+        const client = new ServerClient({ socket });
+        this.onConnect.next(client);
+    };
 }
 export default ServerTransport;

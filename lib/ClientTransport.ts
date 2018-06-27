@@ -19,6 +19,7 @@ export class ClientTransport implements IClientTransport {
     constructor(protected config: IClientTransportConfig) {}
     public start() {
         this.io = SocketIOClient(this.config.address, this.config.opts);
+        this.outputMessage.subscribe((message) => this.io.send(message));
         this.io.on("connect", () => this.onConnect.next());
         this.io.on("disconnect", () => this.onDisconnect.next());
         this.io.on("connecting", () => this.onConnecting.next());
@@ -26,7 +27,6 @@ export class ClientTransport implements IClientTransport {
         this.io.on("message", (message: any) =>
             this.inputMessage.next(message),
         );
-        this.outputMessage.subscribe((message) => this.io.send(message));
     }
     public stop() {
         this.io.removeAllListeners();
