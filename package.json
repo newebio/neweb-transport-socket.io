@@ -21,9 +21,23 @@
   "jest": {},
   "devDependencies": {
     "@types/jest": "^23.1.2",
+    "@types/socket.io": "^1.4.36",
+    "@types/socket.io-client": "^1.4.32",
     "coveralls": "^3.0.1",
     "jest": "^23.2.0",
+    "neweb-core": "^0.17.7",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
     "tslint": "^5.10.0",
     "typescript": "^2.9.2"
+  },
+  "peerDependencies": {
+    "@types/socket.io": "^1.4.36",
+    "@types/socket.io-client": "^1.4.32",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
+  },
+  "dependencies": {
+    "rxjs": "^6.2.1"
   }
 }
